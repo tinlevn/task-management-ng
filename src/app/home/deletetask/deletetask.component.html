@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <form #deleteForm="ngForm" *ngIf="!isSubmitted" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label>ID of task to be deleted</label>
+            <input type="number" required #deleteID="ngModel" [class.is-invalid]="deleteID.invalid && deleteID.touched"
+            class="form-control" name="QuoteID"  [(ngModel)]="ID">
+            <small class="text-danger" [class.d-none]="deleteID.valid || deleteID.untouched">ID needed for deletion</small> 
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="deleteForm.form.invalid">Delete task</button>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+table,mat-paginator {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse:separate;
+  border:solid rgb(200, 197, 197) 1px;
+  border-radius:6px;
+}
+mat-header-cell, mat-cell {
+  justify-content: center;
+  display: flex;
+}
+
+
+.mat-header-cell {
+  color: rgb(225 45 45 / 70%);
+}
+
+#datatable,tr,td{
+  background-color: aliceblue;
+  color:black;
+}
+h1,h2,h3,h4{
+  text-align: center;
+}
