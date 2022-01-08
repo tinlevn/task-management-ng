@@ -13,6 +13,8 @@ import {FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { MatSortModule } from '@angular/material/sort';
 import { DeletetaskComponent } from './home/deletetask/deletetask.component';
+import {EnrollmentService} from "./enrollment.service";
+import {CommonModule} from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +32,10 @@ import { DeletetaskComponent } from './home/deletetask/deletetask.component';
     MatPaginatorModule,
     NgxPaginationModule,
     FormsModule,
-    MatSortModule
+    MatSortModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [EnrollmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

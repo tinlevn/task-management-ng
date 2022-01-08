@@ -7,7 +7,7 @@ import { EnrollmentService } from 'app/enrollment.service';
   styleUrls: ['./deletetask.component.css']
 })
 export class DeletetaskComponent implements OnInit {
-  ID: number=1;
+  ID: number;
   isSubmitted=false;
 
   constructor(private _enrollmentService: EnrollmentService) { }
@@ -16,7 +16,7 @@ export class DeletetaskComponent implements OnInit {
   }
 
   onSubmit(){
-    this._enrollmentService.deleteTask(this.ID).subscribe();
+    this._enrollmentService.deleteTask(this.ID);
     this.isSubmitted=true;
   }
 }

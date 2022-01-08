@@ -15,7 +15,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact </th>
         <td mat-cell *matCellDef="let task"> {{task.Contact}} </td>
       </ng-container>
-    
+
       <ng-container matColumnDef="TaskDescription">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Task description </th>
         <td mat-cell *matCellDef="let task"> {{task.Task}} </td>
@@ -30,41 +30,41 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Task Type </th>
         <td mat-cell *matCellDef="let task"> {{task.TaskType}} </td>
       </ng-container>
-    
+
       <tr mat-header-row *matHeaderRowDef="dpc2" ></tr>
       <tr mat-row *matRowDef="let row; columns: dpc2;"></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons 
+                 showFirstLastButtons
                  aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>
 
-<h4>Display tasks using ngFor</h4>
-<button class="btn btn-primary" (click) = "changeVisibility()" 
-style="display:block; margin: 0 auto;">Display tasks</button>
-<div [hidden]="!isVisible" class="container">
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Task Number</th>
-                <th>Task Type</th>
-                <th>Contact</th>
-                <th>Task Description</th>
-                <th>Due Date</th>
-                <th>Task Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let task of tasksarray">
-                <td>{{task.QuoteID}} </td>
-                <td>{{task.QuoteType}}</td>
-                <td>{{task.Contact}}</td>
-                <td>{{task.Task}}</td>
-                <td>{{task.DueDate | date}}</td>
-                <td>{{task.TaskType}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<!--<h4>Display tasks using ngFor</h4>-->
+<!--<button class="btn btn-primary" (click) = "changeVisibility()"-->
+<!--style="display:block; margin: 0 auto;">Display tasks</button>-->
+<!--<div [hidden]="!isVisible" class="container">-->
+<!--    <table class="table table-striped table-bordered">-->
+<!--        <thead>-->
+<!--            <tr>-->
+<!--                <th>Task Number</th>-->
+<!--                <th>Task Type</th>-->
+<!--                <th>Contact</th>-->
+<!--                <th>Task Description</th>-->
+<!--                <th>Due Date</th>-->
+<!--                <th>Task Type</th>-->
+<!--            </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--            <tr *ngFor="let task of tasksarray">-->
+<!--                <td>{{task.QuoteID}} </td>-->
+<!--                <td>{{task.QuoteType}}</td>-->
+<!--                <td>{{task.Contact}}</td>-->
+<!--                <td>{{task.Task}}</td>-->
+<!--                <td>{{task.DueDate | date}}</td>-->
+<!--                <td>{{task.TaskType}}</td>-->
+<!--            </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->

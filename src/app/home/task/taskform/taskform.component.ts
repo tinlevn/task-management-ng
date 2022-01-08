@@ -1,24 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import {Task} from '../task.component';
+import {Component, OnInit, ViewChild} from '@angular/core';
+
 import { EnrollmentService } from 'app/enrollment.service';
+import {Task} from "../../../shared/interfaces";
+import {NgForm} from "@angular/forms";
+import {Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-taskform',
   templateUrl: './taskform.component.html',
   styleUrls: ['./taskform.component.css']
 })
-export class TaskformComponent implements OnInit {
-  taskModel= new Task(undefined,"", "", "", "", "");
-  isSubmitted=false;
 
+export class TaskformComponent implements OnInit {
+  @ViewChild('taskForm') taskForm: NgForm;
+  isSubmitted=false;
+  QuoteType = '';
+  Contact = '';
+  Description = '';
+  DueDate = '';
+  TaskType =  '';
   constructor(private _enrollmentService: EnrollmentService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    //console.log(this.taskModel);
-    this._enrollmentService.enroll(this.taskModel)
+    const request: Partial<Task> = {
+      QuoteType: this.QuoteType,
+      Contact: this.Contact,
+      Task: this.Description,
+      DueDate: this.DueDate,
+      TaskType: this.TaskType
+    };
+    this._enrollmentService.enroll(request)
     .subscribe();
     this.isSubmitted=true;
   }

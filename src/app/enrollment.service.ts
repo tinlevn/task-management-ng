@@ -1,39 +1,25 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { Task } from './home/task/task.component';
-import { Observable } from 'rxjs';
+
+import {map, Observable} from 'rxjs';
+import {Task, TaskResponse} from "./shared/interfaces";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnrollmentService {
-  _url='https://localhost:44364/api/odata/Quotes';
+  _url='https://localhost:44364/api/odata';
 
   constructor(private _http: HttpClient) { }
 
-  enroll(task:Task){
-    return this._http.post<Task>(this._url,task);
+  enroll(task: Partial<Task>){
+    return this._http.post(this._url + '/Quotes',task);
   }
-  getAll(task: Task[]): Task[]{
-    this._http.get<JSON>(this._url).subscribe(
-      (data: JSON)=>{
-        var formatted_response=JSON.parse(JSON.stringify(data)).value;
-        for (let i=0; i<formatted_response.length; i++){
-          task.push(new Task(
-            formatted_response[i].QuoteID,
-            formatted_response[i].QuoteType,
-            formatted_response[i].Contact,
-            formatted_response[i].Task,
-            formatted_response[i].DueDate,
-            formatted_response[i].TaskType));
-        }
-      }
-      
-    );
-    return task;
+  getTask(): Observable<Task[]> {
+    return this._http.get<TaskResponse>( this._url+ '/Quotes').pipe(map(data => data.value));
   }
 
   deleteTask(number: number){
-    return this._http.delete<number>(this._url+ '('+number+')');
+    return this._http.delete<number>(this._url+ '/Quotes('+number+')');
   }
 }
