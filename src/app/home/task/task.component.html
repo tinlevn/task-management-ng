@@ -1,6 +1,6 @@
 <div class="mat-elevation-z8">
 <h1>Task Management Tool for Bruce Fox Co.</h1>
-  <table mat-table id="datatable" [dataSource]="dts" matSort>
+  <table mat-table id="datatable" [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="QuoteID">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Task Number </th>
         <td mat-cell *matCellDef="let task"> {{task.QuoteID}} </td>
@@ -31,8 +31,8 @@
         <td mat-cell *matCellDef="let task"> {{task.TaskType}} </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="dpc2" ></tr>
-      <tr mat-row *matRowDef="let row; columns: dpc2;"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayColumn" ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"

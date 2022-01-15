@@ -12,14 +12,25 @@ export class EnrollmentService {
 
   constructor(private _http: HttpClient) { }
 
-  enroll(task: Partial<Task>){
+
+  //POST task
+  createNewTask(task: Partial<Task>){
     return this._http.post(this._url + '/Quotes',task);
   }
+  //GET all tasks
   getTask(): Observable<Task[]> {
     return this._http.get<TaskResponse>( this._url+ '/Quotes').pipe(map(data => data.value));
   }
-
+  //DELETE task by ID 
+  /*This should be put in the same row in mat-table*/
   deleteTask(number: number){
     return this._http.delete<number>(this._url+ '/Quotes('+number+')');
   }
+
+  //PUT task
+  updateTask(){
+
+  }
+
+  
 }

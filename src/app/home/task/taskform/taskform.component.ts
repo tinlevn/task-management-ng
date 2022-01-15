@@ -32,7 +32,7 @@ export class TaskformComponent implements OnInit {
       DueDate: this.DueDate,
       TaskType: this.TaskType
     };
-    this._enrollmentService.enroll(request)
+    this._enrollmentService.createNewTask(request)
     .subscribe();
     this.isSubmitted=true;
   }
