@@ -1,10 +1,11 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatTable, MatTableDataSource} from '@angular/material/table';
 import {Task} from 'app/shared/interfaces';
 import {map, Observable} from 'rxjs';
 import { EnrollmentService } from 'app/enrollment.service';
 import { MatSort } from '@angular/material/sort';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -14,19 +15,17 @@ import { MatSort } from '@angular/material/sort';
 
 
 export class TaskComponent implements OnInit, AfterViewInit {
-  //_url='https://localhost:44364/api/';
-
-  //isVisible=false;
 
   dataSource$: Observable<Task[]> | undefined;
   dataSource : MatTableDataSource<Task>;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatTable) tasktable!: MatTable<Task>;
 
   displayColumn: string[]=['QuoteID','QuoteType','Contact','Task','DueDate','TaskType','actions'];
 
-  constructor(private enrollmentService: EnrollmentService, private cdr: ChangeDetectorRef){}
+  constructor(private enrollmentService: EnrollmentService, private cdr: ChangeDetectorRef, private router: Router){}
 
 
   ngOnInit(): void {
@@ -45,11 +44,14 @@ export class TaskComponent implements OnInit, AfterViewInit {
 
   viewTask(){}
 
-  editTask(){}
+  editTask(current: Task){
+    this.router.navigate(['/addtask']);
+    //this.enrollmentService.updateTask(current).subscribe();
+  }
 
   deleteTask(ID: number){
     this.enrollmentService.deleteTask(ID).subscribe();
-    
+    this.tasktable.renderRows();
   }
   
 }

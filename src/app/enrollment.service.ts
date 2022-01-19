@@ -15,7 +15,6 @@ export class EnrollmentService {
   //GET all tasks
   getTask(): Observable<Task[]> {
     return this._http.get<Task[]>(this._url+ 'Quotes');
-    //.pipe(map(data => data.value))
   }
 
   //POST task
@@ -30,7 +29,7 @@ export class EnrollmentService {
   }
 
   //PUT task
-  updateTask(){
-
+  updateTask(task: Task){
+    return this._http.put(this._url + 'Quotes',task);
   }
 }

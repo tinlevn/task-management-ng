@@ -36,10 +36,10 @@
         <td mat-cell *matCellDef="let task"> 
           <!-- <button mat-icon-button (click)="viewTask()">
             <mat-icon>remove_red_eye</mat-icon>
-          </button>
-          <button mat-icon-button (click)="editTask()">
-            <mat-icon>edit</mat-icon>
           </button> -->
+          <button mat-icon-button (click)="editTask(task)">
+            <mat-icon>edit</mat-icon>
+          </button>
           <button mat-icon-button (click)="deleteTask(task.QuoteID)">
             <mat-icon>delete</mat-icon>
           </button>
@@ -50,7 +50,7 @@
       <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
     </table>
     
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    <mat-paginator [pageSizeOptions]="[10, 20]"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">
   </mat-paginator>
