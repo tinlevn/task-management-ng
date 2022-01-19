@@ -1,11 +1,10 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {Task, TaskResponse} from 'app/shared/interfaces';
+import {Task} from 'app/shared/interfaces';
 import {map, Observable} from 'rxjs';
 import { EnrollmentService } from 'app/enrollment.service';
 import { MatSort } from '@angular/material/sort';
-
 
 @Component({
   selector: 'app-task',
@@ -15,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
 
 
 export class TaskComponent implements OnInit, AfterViewInit {
-  _url='https://localhost:44364/api/odata';
+  //_url='https://localhost:44364/api/';
 
   //isVisible=false;
 
@@ -25,7 +24,7 @@ export class TaskComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayColumn: string[]=['QuoteID','QuoteType','Contact','TaskDescription','DueDate','TaskType'];
+  displayColumn: string[]=['QuoteID','QuoteType','Contact','Task','DueDate','TaskType','actions'];
 
   constructor(private enrollmentService: EnrollmentService, private cdr: ChangeDetectorRef){}
 
@@ -37,15 +36,20 @@ export class TaskComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
-
     this.cdr.detectChanges();
+  }
 
-}
   ngAfterViewInit(): void {
 
   }
-  // changeVisibility(){
-  //   this.isVisible = !this.isVisible;
-  // }
 
+  viewTask(){}
+
+  editTask(){}
+
+  deleteTask(ID: number){
+    this.enrollmentService.deleteTask(ID).subscribe();
+    
+  }
+  
 }

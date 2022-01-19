@@ -12,16 +12,16 @@ import { TaskformComponent } from './home/task/taskform/taskform.component';
 import {FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { MatSortModule } from '@angular/material/sort';
-import { DeletetaskComponent } from './home/deletetask/deletetask.component';
 import {EnrollmentService} from "./enrollment.service";
 import {CommonModule} from "@angular/common";
+import {MatIconModule} from '@angular/material/icon'
+
 @NgModule({
   declarations: [
     AppComponent,
     TaskComponent,
     TaskformComponent,
-    HomeComponent,
-    DeletetaskComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,8 @@ import {CommonModule} from "@angular/common";
     NgxPaginationModule,
     FormsModule,
     MatSortModule,
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   providers: [EnrollmentService],
   bootstrap: [AppComponent]

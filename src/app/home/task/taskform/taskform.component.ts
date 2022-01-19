@@ -4,6 +4,7 @@ import { EnrollmentService } from 'app/enrollment.service';
 import {Task} from "../../../shared/interfaces";
 import {NgForm} from "@angular/forms";
 import {Observable, of} from "rxjs";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-taskform',
@@ -19,7 +20,7 @@ export class TaskformComponent implements OnInit {
   Description = '';
   DueDate = '';
   TaskType =  '';
-  constructor(private _enrollmentService: EnrollmentService) { }
+  constructor(private _enrollmentService: EnrollmentService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,5 +36,6 @@ export class TaskformComponent implements OnInit {
     this._enrollmentService.createNewTask(request)
     .subscribe();
     this.isSubmitted=true;
+    this.router.navigate(['/all']);
   }
 }

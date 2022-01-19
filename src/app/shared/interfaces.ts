@@ -7,7 +7,7 @@ export interface Task{
     TaskType: string
 }
 
-export interface TaskResponse{
-  value: Task[]
-  Random: any
-}
+// export interface TaskResponse{
+//   value: Task[]
+//   Random: any
+// }

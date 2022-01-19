@@ -1,15 +1,9 @@
-<h1>Bruce Fox Task Management</h1>
-<nav>
     <ul>
-        <button routerLink="/all" routerLinkActive="active"
-            style="display:block; margin: 0 auto;" type="button" 
-            class="btn btn-outline-info">View all tasks</button>
-        <button routerLink="/addtask" routerLinkActive="active"
-            style="display:block; margin: 0 auto;"
-            type="button" class="btn btn-dark">Add new task</button>
-            <button routerLink="/delete" routerLinkActive="active"
-            style="display:block; margin: 0 auto;"
-            type="button" class="btn btn-outline-danger">Delete task with specified ID</button>
+        <button mat-icon-button routerLink="/all" routerLinkActive="active" id="homebutton">
+            <mat-icon>home</mat-icon>
+        </button>
+        <button mat-icon-button routerLink="/addtask" routerLinkActive="active" id="addbutton">
+            <mat-icon>note_add</mat-icon> 
+        </button>
     </ul>
-</nav>
 <router-outlet></router-outlet>

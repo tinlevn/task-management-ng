@@ -1,0 +1,4 @@
+#homebutton , #addbutton {
+    display:inline-block;
+    float: right;
+}
